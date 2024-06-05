@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Detail</title>
+    <link rel="stylesheet" href="/static/imageDetail.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+    <body>
+        <table id="imageDetailTable" width=100%>
+            <tr>
+                <td rowspan="5" width="400px" align="center">
+                    <img src="{{.ImageThumbnail}}" alt="Image Thumbnail" class='stock-image-thumbnail'>
+                </td>
+                <td style="width:200px"><strong>Image Filename:</strong></td>
+                <td id="td_imageFname">{{.ImageFname}}</td>
+            </tr>
+            <tr>
+                <td><strong>Image Camera:</strong></td>
+                <td>{{.ImageCamera}}</td>
+            </tr>
+            <tr>
+                <td><strong>Foap Status:</strong></td>
+                <td id="foap-status">
+                    <input type="hidden" id="foap-status-input" value="{{.FoapStatus}}">
+                    <span class="status-label"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Shutterstock Status:</strong></td>
+                <td id="shutterstock-status">
+                    <input type="hidden" id="shutterstock-status-input" value="{{.ShutterstockStatus}}">
+                    <span class="status-label"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Alamy Status:</strong></td>
+                <td id="alamy-status">
+                    <input type="hidden" id="alamy-status-input" value="{{.AlamyStatus}}">
+                    <span class="status-label"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Image Description:</strong></td>
+                <td colspan="2">
+                    <input type="text" id="txt-imageDescription" class="form-control" value="">
+                    <button class="btn btn-primary update-description">Update</button>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>Image Tag:</strong></td>
+                <td  colspan="2" id="td_imageTag">
+                    <input id='in_imageTag' value="{{.ImageTag}}" width="100%"autofocus>
+                    <br/>
+                    <button class="btn btn-primary" id="btn-update-tags">Update</button>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Created Date:</strong></td>
+                <td colspan="2">{{.CreatedDt}}</td>
+            </tr>
+        </table>
+    {{ range .ImageTagsGroupRows }}
+        <br/>
+        <fieldset id="field-{{ .TagGroupName }}"  class="border p-2">
+            <legend id="legend-{{ .TagGroupName }}" class="legend-tags float-none w-auto">Add #{{ .TagGroupName }} Tags</legend>
+            {{ range (split .TagList ",") }}
+                <span class="badge rounded-pill bg-primary">{{ . }}</span>
+            {{ end }}
+        </fieldset>
+    {{ end }}
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/imageDetail.js"></script>
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+</body>
+</html>

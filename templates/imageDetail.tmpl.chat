@@ -1,0 +1,25 @@
+given this tmpl golang template file below.
+1. value of hidden input foap-status-input/shutterstock-status-input/alamy-status-input can be 0/1/10/11.
+2. if the value is 0/1, shows an on/off switch next to the hidden input to change the hidden's value. otherwise show a TAG style label instead.
+3. The on/off switch use the text "upload on"/"upload off" istead of "on/off"
+4. Use (jquery/bootstrap/custom javascript/custom css) to make the code more simple.
+5. Custom javascript/css file must be in a separate file instead of add code to tmpl directly, and file name be static/imageDetail.js and static/imageDetail.css
+6. The TAG style label will be blue in backgrand with white text color, if corresponding hiddlen value is 10 and lable shows "Processing"
+7. The TAG style label will be green in backgrand with white text color, if corresponding hiddlen value is 11 and lable shows "Completed" 
+8. The TAG style label will be red in backgrand with white text color, if corresponding hiddlen value other than 0/1/10/11, and lable shows "UNKNOW" 
+
+
+part of the table rows in imageDetaiil.tmpl:
+
+<tr>
+    <td><strong>Foap Status:</strong></td>
+    <td id="foap-status"><input type="hidden" id="foap-status-input" value="{{.FoapStatus}}"></td>
+</tr>
+<tr>
+    <td><strong>Shutterstock Status:</strong></td>
+    <td id="shutterstock-status"><input type="hidden" id="shutterstock-status-input" value="{{.ShutterstockStatus}}"></td>
+</tr>
+<tr>
+    <td><strong>Alamy Status:</strong></td>
+    <td id="alamy-status"><input type="hidden" id="alamy-status-input" value="{{.AlamyStatus}}"></td>
+</tr>

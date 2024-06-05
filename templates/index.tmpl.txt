@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Inventory</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        {{range .imageInventoryRows}}
+            <a href="/imageDetail?imageFname={{.ImageFname}}">
+                <img src="{{.ImageThumbnail}}" width="100">
+            </a>
+        {{end}}
+    </div>
+</body>
+</html>
